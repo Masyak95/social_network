@@ -5,43 +5,44 @@ import {NavLink} from "react-router-dom";
 const DialogItem = (props) => {
     let path = "/dialogs/" + props.id;
 
-    return <div className={s.dialog + ' ' + s.active}>
+    return <div className={s.dialogs + ' ' + s.active}>
         <NavLink to={path}>{props.name}</NavLink>
     </div>
 }
 
 const Message = (props) => {
-    return <div className={s.dialog}>{props.message}</div>
+    return <div className={s.dialogs}>{props.message}</div>
 }
 
 const Dialogs = (props) => {
 
     let dialogsData = [
-        {id: 1, name: 'Dimych'},
-        {id: 2, name: 'Andrew'},
-        {id: 3, name: 'Sveta'},
-        {id: 4, name: 'Sasha'},
-        {id: 5, name: 'Viktor'},
-        {id: 6, name: 'Valera'}
+        {id: 1, name: 'Etienne Mandel Tristan'},
+        {id: 2, name: 'John Barnes'},
+        {id: 3, name: 'Jenelle Lacey Jasmyn'},
+        {id: 4, name: 'Toya Avery Rahel'},
+        {id: 5, name: 'Arnold Fraser'},
+        {id: 6, name: 'Lillian Gilson'}
     ]
 
     let messagesData = [
-        {id: 1, message: 'Hi'},
-        {id: 2, message: 'How is your it-kamasutra?'},
-        {id: 3, message: 'Yo'},
-        {id: 4, message: 'Yo'},
+        {id: 1, message: 'Keep Your Shirt On'},
+        {id: 2, message: 'How is your it-study?'},
+        {id: 3, message: 'Jaws of Death'},
+        {id: 4, message: 'Hi!'},
         {id: 5, message: 'Yo'}
     ]
+
+    let dialogsElements =  dialogsData.map( d => <DialogItem name={d.name} id={d.id} />  );
+    let messagesElements = messagesData.map( m => <Message message={m.message}/> );
 
     return (
         <div className={s.dialogs}>
             <div className={s.dialogsItems}>
-                <DialogItem name={dialogsData[0].name} id={dialogsData[0].id} />
-                <DialogItem name={dialogsData[1].name} id={dialogsData[1].id}/>
+                { dialogsElements }
             </div>
             <div className={s.messages}>
-                <Message message={messagesData[0].message}/>
-                <Message message={messagesData[1].message}/>
+                { messagesElements }
             </div>
         </div>
     )
