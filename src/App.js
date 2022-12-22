@@ -6,7 +6,8 @@ import {Route, Routes} from "react-router-dom";
 import Dialogs from "./components/Dialogs/Dialogs";
 
 
-function App() {
+function App(props) {
+
     return (
         <div className='app-wrapper'>
             <Header/>
@@ -14,14 +15,17 @@ function App() {
             <div className='app-wrapper-content'>
                 <Routes>
                     <Route path={'/dialogs'}
-                           element={<Dialogs/>}
+                           element={<Dialogs dialogs={props.dialogs}
+                                             messages={props.messages}
+                           />}
                     />
                     <Route path={'/profile'}
-                           element={<Profile/>}
+                           element={<Profile posts={props.posts}/>}
                     />
                 </Routes>
             </div>
         </div>
     );
 }
+
 export default App;
